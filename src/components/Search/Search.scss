@@ -1,51 +1,91 @@
 @import '../../styles/variables';
 
+// form {
+//     font-size: 1.2rem;
+//     display: grid;
+//     margin-top: 1rem;
+// }
+
+// .input {
+//     font-size: 1.6rem;
+//     padding: 0.5rem 2rem;
+//     line-height: 2.8rem;
+//     border-radius: 20px;
+//     border: 1px solid rgb(11, 31, 121);
+//     margin: 1rem 1rem;
+// }
+
+// .button {
+//     background-color: $color-main;
+//     color: white;
+//     padding: 1rem 2rem;
+//     border: 1px solid rgba(42, 66, 146, 0.7);
+//     transition: background-color 250ms;
+//     border-radius: 20px;
+//     font-size: 1.4rem;
+//     margin: 1rem 1rem;
+
+// }
+
+// .button:hover {
+//     background-color: rgba(10, 5, 34, 0.75);
+// }
+
+// @media (min-width:786px) {
+//     .form
+//     {
+//         display: block;
+//         text-align: center;
+//     }
+
+//     form {
+//         display: inline-block;
+//         margin-left: auto;
+//         margin-right: auto;
+//         text-align: center;
+//     }
+//     .input {
+//         margin-bottom: 0;
+//         max-width: 50%;
+//     }    
+// }
+
 form {
-    font-size: 1.2rem;
-    display: grid;
-    margin-top: 1rem;
+  margin: auto;
+  max-width: 400px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
-.input {
-    font-size: 1.6rem;
-    padding: 0.5rem 2rem;
-    line-height: 2.8rem;
-    border-radius: 20px;
-    border: 1px solid rgb(11, 31, 121);
-    margin: 1rem 1rem;
+form.form input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  border-radius: 15px 0px 0px 15px;
 }
 
-.button {
-    background-color: $color-main;
-    color: white;
-    padding: 1rem 2rem;
-    border: 1px solid rgba(42, 66, 146, 0.7);
-    transition: background-color 250ms;
-    border-radius: 20px;
-    font-size: 1.4rem;
-    margin: 1rem 1rem;
-
+form.form button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: $color-main;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  border-radius: 0px 15px 15px 0px;
 }
 
-.button:hover {
-    background-color: rgba(10, 5, 34, 0.75);
+form.form button:hover {
+  background: #0b7dda;
 }
 
-@media (min-width:786px) {
-    .form
-    {
-        display: block;
-        text-align: center;
-    }
-
-    form {
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
-    .input {
-        margin-bottom: 0;
-        max-width: 50%;
-    }    
+form.form::after {
+  content: "";
+  clear: both;
+  display: table;
 }

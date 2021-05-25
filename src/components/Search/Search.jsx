@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Search.scss';
+import TvshowCard from './TvshowCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function SearchMovies() {
-    const [query, setQuery] = useState();
-    const [movies, setMovies] = useState(null);
+    const [query, setQuery] = useState('');
+    const [tvshows, setTvshows] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [cardAmount, setCardAmount] = useState(4);
+
+    useEffect(() => {
+        if (window.screen.width >= 769) {
+          setCardAmount(6);
+        }
+      }, []);
 
     const api_key = process.env.REACT_APP_API_KEY
 
@@ -16,10 +26,10 @@ export default function SearchMovies() {
         try {
             const res = await fetch(url);
             const data = await res.json();
-            setMovies(data.results);
+            setTvshows(data.results);
         } catch (err) {
             setError('Failed to fetch movies');
-            setMovies([]);
+            setTvshows([]);
         } finally {
             setLoading(false);
         }
@@ -36,19 +46,21 @@ export default function SearchMovies() {
                     placeholder="Search tv shows"
                 />
                 <button className="button" type="submit">
-                    Search
+                <FontAwesomeIcon icon={faSearch} className="search__icon" />
                 </button>
             </form>
             {loading && <p className="flash info">Loading...</p>} 
             {error && <p className="flash error">{error}</p>}
             {!loading && !error && (
-                <div className="card-list">
-                    {movies &&
-                        movies
-                            .filter((movie) => movie.poster_path)
-                            .map((movie) => (
-                                movie.name
-                            ))}
+                <div className="shows">
+                    <div className="shows__list">
+                        {tvshows &&
+                            tvshows.slice(0, cardAmount)
+                                .filter((tvshow) => tvshow.poster_path)
+                                .map((tvshow) => (
+                                    <TvshowCard tvshow={tvshow} key={tvshow.id} />
+                                ))}
+                    </div>
                 </div>
             )}
         </div>
