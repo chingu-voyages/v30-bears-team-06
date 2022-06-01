@@ -37,10 +37,7 @@ export default function FavoritesPage() {
     <div className="page">
       <div className="page__content-wrapper">
         {favorites && favorites.items && favorites.items.length > 0 && (
-          <ShowFavoriteList
-            title="Your Favorite Shows"
-            shows={favorites.items}
-          />
+          <ShowFavoriteList title="My Favorite Shows" shows={favorites.items} />
         )}
       </div>
     </div>
